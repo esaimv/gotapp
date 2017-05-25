@@ -1,8 +1,6 @@
 var bg_x = 0;
 jQuery(document).ready( function($){
-	$("#mover_maps").click(function(){
-		
-	})
+	$("#map").load('maps.html')
 	$( '#More-domains' ).hide();
 	$( '#Add-caption' ).click(function(){
 		$( this ).toggleClass( 'invert' );
