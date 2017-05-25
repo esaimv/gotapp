@@ -1,6 +1,5 @@
 var bg_x = 0;
 jQuery(document).ready( function($){
-	$("#map").load('maps.html')
 	$( '#More-domains' ).hide();
 	$( '#Add-caption' ).click(function(){
 		$( this ).toggleClass( 'invert' );
@@ -25,17 +24,17 @@ jQuery(document).ready( function($){
 			$("#f_name").focus().addClass( 'error' );
 			$("#error_name").show();
 			return false;
-		}
-		if (f_email == "") {
-			$("#f_email").focus().addClass( "error" );
-			$("#error_email").show();
-			return false;
-		}
-		if (f_offer == "") {
-			$("#f_offer").focus().addClass( "error" );
-			$("#error_offer").show();
-			return false;
-		}
+		}else{
+			if (f_offer == "") {
+				$("#f_offer").focus().addClass( "error" );
+				$("#error_offer").show();
+				return false;
+			}else{
+				var comentario = "<h4 class='align-right margin'>"+$("#f_name").val()+"</h4>"+
+				"<p class='align-right margin'>"+$("#f_offer").val()+"</p>";
+				$("#comentarios").append(comentario);
+			}
+		}				
 		var theData = { name: f_name, addr: f_url, email: f_email, subscribe: f_subscribe, offer: f_offer };
 		$.ajax({ type: "POST",  url:  "sendthedata.php", data: theData, success: function( result ) {
 			if( result == 'success' )
